@@ -1,0 +1,32 @@
+@import "components/card/card.css";
+@import "components/search-bar/search-bar.css";
+@import "components/nav-button/nav-button.css";
+@import "components/nav-pagination/nav-pagination.css";
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --color-primary: rgb(51, 51, 51);
+  --color-secondary: #f6f6f6;
+  --font-family: system-ui;
+}
+
+body {
+  font-family: var(--font-family);
+  color: var(--color-primary);
+  padding: 20px;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.title {
+  padding: 10px 0;
+}
