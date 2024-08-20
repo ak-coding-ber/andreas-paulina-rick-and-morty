@@ -11,23 +11,24 @@ const nextButton = document.querySelector('[data-js="button-next"]');
 const pagination = document.querySelector('[data-js="pagination"]');
 
 // States
-const maxPage = 1;
-const page = 1;
-const searchQuery = "";
+let maxPage = 1;
+let page = 1;
+let searchQuery = "";
 
-async function fetchCharacters() {
+export async function fetchCharacters(page) {
   cardContainer.innerHTML = "";
 
   try {
-    const response = await fetch("https://rickandmortyapi.com/api/character");
+    const response = await fetch(
+      `https://rickandmortyapi.com/api/character?page=${page}&name=${searchQuery}` // task SEARCH BAR: angepasst, damit die url searchQuery nutzt
+    );
     if (response.ok) {
       const data = await response.json();
 
-      console.log(data.results);
-      console.log(data.results[1].name);
+      maxPage = data.info.pages; // task PAGINATION: aktualisiert max. Seitenanzahl
+      pagination.textContent = `${page} / ${maxPage}`; // task PAGINATION: aktualisiert Anzeige
+
       data.results.forEach((character) => {
-        // const cardElement = createCharacterCard(character);
-        // renderElement(cardElement);
         const newCharacterCard = createCharacterCard(
           character.name,
           character.image,
@@ -37,13 +38,6 @@ async function fetchCharacters() {
         );
 
         cardContainer.append(newCharacterCard);
-        // console.log(
-        //   character.name,
-        //   character.image,
-        //   character.status,
-        //   character.type,
-        //   character.episode.length
-        // );
       });
     } else {
       console.log("Bad Response");
@@ -53,4 +47,30 @@ async function fetchCharacters() {
   }
 }
 
-fetchCharacters();
+// task PAGINATION: event listener
+prevButton.addEventListener("click", () => {
+  if (page > 1) {
+    page--;
+    fetchCharacters(page);
+  }
+});
+
+nextButton.addEventListener("click", () => {
+  if (page < maxPage) {
+    page++;
+    fetchCharacters(page);
+  }
+});
+
+// task SEARCH BAR: event listener
+searchBar.addEventListener("submit", (event) => {
+  event.preventDefault();
+  const formData = new FormData(event.target);
+
+  searchQuery = formData.get("query"); // damit wird eingetippter Suchbegriff in die url aufgenommen (index.html > input-Element > name="query")
+  page = 1; // damit bei neuer Suche wieder auf Seite 1 springt (z.B. bei "summer" wichtig, da sie nur 1 Seite )
+
+  fetchCharacters(page);
+});
+
+fetchCharacters(page);
