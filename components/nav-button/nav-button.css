@@ -8,6 +8,10 @@
   height: 2rem;
   box-shadow: 9px 10px 9px 0px rgba(90, 25, 92, 0.8);
   border-radius: 10px;
+  background-color: #25e200;
+  color: #551854;
+  font-size: 1rem;
+  font-weight: 600;
 }
 
 .button:hover {

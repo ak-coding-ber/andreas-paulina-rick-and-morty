@@ -26,10 +26,6 @@ body {
   color: #25e200;
 }
 
-.title {
-  align-self: center;
-}
-
 main {
   display: flex;
   flex-direction: column;
@@ -38,4 +34,6 @@ main {
 
 .title {
   padding: 10px 0;
+  align-self: center;
+  font-size: 4rem;
 }
