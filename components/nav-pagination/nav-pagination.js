@@ -1,37 +1,9 @@
-/*
+export function createPagination() {
+  const paginationElement = document.createElement("span");
 
-import { fetchCharacters } from "./components/nav-pagination/nav-pagination.js";
+  paginationElement.classList.add("navigation__pagination");
+  paginationElement.setAttribute("data-js", "pagination");
+  paginationElement.textContent = "1 / 1";
 
-import { page } from "../../index.js";
-import { maxPage } from "../../index.js";
-
-import { prevButton } from "../../index.js";
-import { nextButton } from "../../index.js";
-import { pagination } from "../../index.js";
-
-
-prevButton.addEventListener("click", () => {
-  if (page === 1) {
-    return;
-  } else {
-    page--;
-  }
-  fetchCharacters(page);
-});
-
-nextButton.addEventListener("click", () => {
-    if (page === maxPage) {
-      return;
-    } else {
-  page++;
-  consol.log("next Button was clicked");
-    }
-  fetchCharacters(page);
-});
-
-nextButton.addEventListener("click", () => {
-  console.log("button was clicked");
-  fetchCharacters(1);
-});
-
-*/
+  return paginationElement;
+}
