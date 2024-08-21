@@ -12,7 +12,9 @@
 :root {
   --color-primary: rgb(51, 51, 51);
   --color-secondary: #f6f6f6;
-  --font-family: system-ui;
+  --font-family: "Jersey 10", sans-serif;
+  font-weight: 100;
+  font-style: normal;
 }
 
 body {
