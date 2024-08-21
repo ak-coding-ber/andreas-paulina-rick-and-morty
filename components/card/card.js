@@ -30,5 +30,5 @@ export function createCharacterCard(
           </div>
         </li>`;
 
-  cardContainer.innerHTML += newCard;
+  return newCard;
 }

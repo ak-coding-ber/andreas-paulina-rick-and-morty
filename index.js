@@ -1,4 +1,6 @@
 import { createCharacterCard } from "./components/card/card.js";
+import { createButton } from "./components/nav-button/nav-button.js";
+import { createPagination } from "./components/nav-pagination/nav-pagination.js";
 
 const cardContainer = document.querySelector('[data-js="card-container"]');
 const searchBarContainer = document.querySelector(
@@ -6,17 +8,37 @@ const searchBarContainer = document.querySelector(
 );
 const searchBar = document.querySelector('[data-js="search-bar"]');
 const navigation = document.querySelector('[data-js="navigation"]');
-const prevButton = document.querySelector('[data-js="button-prev"]');
-const nextButton = document.querySelector('[data-js="button-next"]');
-const pagination = document.querySelector('[data-js="pagination"]');
+// const prevButton = document.querySelector('[data-js="button-prev"]');
+// const nextButton = document.querySelector('[data-js="button-next"]');
 
 // States
 let maxPage = 1;
 let page = 1;
 let searchQuery = "";
 
+function handleNextButtonClick() {
+  if (page < maxPage) {
+    page++;
+    fetchCharacters(page);
+  }
+}
+
+function handlePrebviousButtonClick() {
+  if (page > 1) {
+    page--;
+    fetchCharacters(page);
+  }
+}
+
+navigation.append(
+  createButton("button--previous", "previous", handlePrebviousButtonClick)
+);
+navigation.append(createPagination());
+navigation.append(createButton("button--next", "next", handleNextButtonClick));
+
 export async function fetchCharacters(page) {
   cardContainer.innerHTML = "";
+  const pagination = document.querySelector('[data-js="pagination"]');
 
   try {
     const response = await fetch(
@@ -37,7 +59,7 @@ export async function fetchCharacters(page) {
           character.episode.length
         );
 
-        cardContainer.append(newCharacterCard);
+        cardContainer.innerHTML += newCharacterCard;
       });
     } else {
       console.log("Bad Response");
@@ -46,21 +68,6 @@ export async function fetchCharacters(page) {
     console.error("An Error occurred", error);
   }
 }
-
-// task PAGINATION: event listener
-prevButton.addEventListener("click", () => {
-  if (page > 1) {
-    page--;
-    fetchCharacters(page);
-  }
-});
-
-nextButton.addEventListener("click", () => {
-  if (page < maxPage) {
-    page++;
-    fetchCharacters(page);
-  }
-});
 
 // task SEARCH BAR: event listener
 searchBar.addEventListener("submit", (event) => {
