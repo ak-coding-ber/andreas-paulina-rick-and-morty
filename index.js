@@ -1,15 +1,11 @@
 import { createCharacterCard } from "./components/card/card.js";
 import { createButton } from "./components/nav-button/nav-button.js";
 import { createPagination } from "./components/nav-pagination/nav-pagination.js";
+import { createSearchBar } from "./components/search-bar/search-bar.js";
 
 const cardContainer = document.querySelector('[data-js="card-container"]');
-const searchBarContainer = document.querySelector(
-  '[data-js="search-bar-container"]'
-);
-const searchBar = document.querySelector('[data-js="search-bar"]');
 const navigation = document.querySelector('[data-js="navigation"]');
-// const prevButton = document.querySelector('[data-js="button-prev"]');
-// const nextButton = document.querySelector('[data-js="button-next"]');
+const main = document.querySelector("main");
 
 // States
 let maxPage = 1;
@@ -23,15 +19,26 @@ function handleNextButtonClick() {
   }
 }
 
-function handlePrebviousButtonClick() {
+function handlePreviousButtonClick() {
   if (page > 1) {
     page--;
     fetchCharacters(page);
   }
 }
 
+function handleSearchbarSubmit(event) {
+  event.preventDefault();
+  const formData = new FormData(event.target);
+
+  searchQuery = formData.get("query");
+  page = 1;
+
+  fetchCharacters(page);
+}
+
+main.insertBefore(createSearchBar(handleSearchbarSubmit), main.firstChild);
 navigation.append(
-  createButton("button--previous", "previous", handlePrebviousButtonClick)
+  createButton("button--previous", "previous", handlePreviousButtonClick)
 );
 navigation.append(createPagination());
 navigation.append(createButton("button--next", "next", handleNextButtonClick));
@@ -68,16 +75,4 @@ export async function fetchCharacters(page) {
     console.error("An Error occurred", error);
   }
 }
-
-// task SEARCH BAR: event listener
-searchBar.addEventListener("submit", (event) => {
-  event.preventDefault();
-  const formData = new FormData(event.target);
-
-  searchQuery = formData.get("query"); // damit wird eingetippter Suchbegriff in die url aufgenommen (index.html > input-Element > name="query")
-  page = 1; // damit bei neuer Suche wieder auf Seite 1 springt (z.B. bei "summer" wichtig, da sie nur 1 Seite )
-
-  fetchCharacters(page);
-});
-
 fetchCharacters(page);
