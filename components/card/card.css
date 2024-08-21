@@ -1,6 +1,7 @@
 .card-container {
   margin-bottom: 10px;
   display: flex;
+  justify-content: center;
   /* grid-template-columns: repeat(4, 1fr); */
   flex-wrap: wrap;
   gap: 20px;
