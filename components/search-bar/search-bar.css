@@ -1,5 +1,8 @@
 .search-bar-container {
   width: 300px;
+  align-self: center;
+  margin: 20px 0;
+  box-shadow: 9px 10px 9px 0px rgba(90, 25, 92, 0.8);
 }
 
 .search-bar {

@@ -70,6 +70,7 @@ export async function fetchCharacters(page) {
       });
     } else {
       console.log("Bad Response");
+      pagination.textContent = `1 / 1`; // task PAGINATION: aktualisiert Anzeige
     }
   } catch (error) {
     console.error("An Error occurred", error);
