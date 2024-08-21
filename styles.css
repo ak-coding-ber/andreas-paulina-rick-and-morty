@@ -12,7 +12,9 @@
 :root {
   --color-primary: rgb(51, 51, 51);
   --color-secondary: #f6f6f6;
-  --font-family: system-ui;
+  --font-family: "Jersey 10", sans-serif;
+  font-weight: 100;
+  font-style: normal;
 }
 
 body {
@@ -36,6 +38,11 @@ main {
 .title {
   padding: 10px 0;
   align-self: center;
-  font-size: 4rem;
+  font-size: 3rem;
   text-shadow: 2px 5px rgba(90, 25, 92, 0.8);
+}
+@media (min-width: 600px) {
+  .title {
+    font-size: 5rem;
+  }
 }

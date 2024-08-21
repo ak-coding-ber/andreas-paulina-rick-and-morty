@@ -10,8 +10,9 @@
   border-radius: 10px;
   background-color: #25e200;
   color: #551854;
-  font-size: 1rem;
-  font-weight: 600;
+  font-family: var(--font-family);
+  font-weight: 300;
+  font-size: larger;
 }
 
 .button:hover {
