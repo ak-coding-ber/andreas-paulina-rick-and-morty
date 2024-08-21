@@ -15,7 +15,7 @@ export function createSearchBar(onSubmit) {
           <button class="search-bar__button" aria-label="search for character">
             <img
               class="search-bar__icon"
-              src="assets/magnifying-glass.png"
+              src="assets/search.png"
               alt=""
             />
           </button>

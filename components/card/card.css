@@ -1,9 +1,17 @@
 .card-container {
   margin-bottom: 10px;
+  display: flex;
+  /* grid-template-columns: repeat(4, 1fr); */
+  flex-wrap: wrap;
+  gap: 20px;
 }
 .card {
   width: 300px;
   background-color: var(--color-secondary);
+  border: solid #25e200;
+  border-radius: 10px;
+  background-color: #551854;
+  box-shadow: 9px 10px 9px 0px rgba(90, 25, 92, 0.8);
 }
 
 .card__info {
@@ -22,4 +30,9 @@
 
 li {
   list-style: none;
+}
+
+.card__image {
+  width: 100%;
+  border-radius: 10px 10px 0 0;
 }

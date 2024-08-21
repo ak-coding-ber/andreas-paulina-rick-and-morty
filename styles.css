@@ -19,6 +19,11 @@ body {
   font-family: var(--font-family);
   color: var(--color-primary);
   padding: 20px;
+  display: flex;
+  flex-direction: column;
+  /* background-color: #349f13; */
+  background-color: #c10f8a;
+  color: #25e200;
 }
 
 main {
@@ -29,4 +34,6 @@ main {
 
 .title {
   padding: 10px 0;
+  align-self: center;
+  font-size: 4rem;
 }
