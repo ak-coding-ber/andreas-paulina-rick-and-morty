@@ -36,6 +36,11 @@ main {
 .title {
   padding: 10px 0;
   align-self: center;
-  font-size: 4rem;
+  font-size: 3rem;
   text-shadow: 2px 5px rgba(90, 25, 92, 0.8);
+}
+@media (min-width: 600px) {
+  .title {
+    font-size: 5rem;
+  }
 }
