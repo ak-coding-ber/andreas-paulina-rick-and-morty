@@ -74,6 +74,7 @@ export async function fetchCharacters(page) {
     }
   } catch (error) {
     console.error("An Error occurred", error);
+    pagination.textContent = `1 / 1`;
   }
 }
 fetchCharacters(page);

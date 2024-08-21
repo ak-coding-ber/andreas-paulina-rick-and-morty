@@ -21,7 +21,7 @@ body {
   padding: 20px;
   display: flex;
   flex-direction: column;
-  /* background-color: #349f13; */
+  align-items: center;
   background-color: #c10f8a;
   color: #25e200;
 }
@@ -29,6 +29,7 @@ body {
 main {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 10px;
 }
 
@@ -36,4 +37,5 @@ main {
   padding: 10px 0;
   align-self: center;
   font-size: 4rem;
+  text-shadow: 2px 5px rgba(90, 25, 92, 0.8);
 }
